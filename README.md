@@ -63,22 +63,22 @@ http://127.0.0.1:5000/
 Fill in the form → click Predict → see the ADR (predicted room price).
 
 ## Dependencies
-Flask
-pandas
-numpy
-scikit-learn
+- Flask
+- pandas
+- numpy
+- scikit-learn
 
 ## Notes
-Trained model stored in model.pkl
-HTML template in templates/index.html
-Background image in static/background.jpg
-All UI changes (transparent buttons, olive-green color, background image) are reflected in the web app.
+- Trained model stored in model.pkl
+- HTML template in templates/index.html
+- Background image in static/background.jpg
+- All UI changes (transparent buttons, olive-green color, background image) are reflected in the web app.
 
 ## Web Application
 The app allows users to input booking details such as:
-Lead time
-Number of nights (weekend and weekday)
-Number of adults, children, and babies
+- Lead time
+- Number of nights (weekend and weekday)
+- Number of adults, children, and babies
 
 …and predicts the Average Daily Rate using the trained machine learning model.
 
