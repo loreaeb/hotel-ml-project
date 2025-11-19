@@ -36,17 +36,29 @@ cd hotel-ml-project
 ```
 
 2. **Create and activate a virtual environment:**
+
+```bash
 python3 -m venv venv
 source venv/bin/activate   # macOS/Linux
+```
 
 3. **Install Dependencies:**
+
+```bash
 pip install -r requirements.txt
+```
 
 4. **Run the app:**
+
+ ```bash
 python app.py
+```
 
 5. **Open your browser:**
+   
+```bash
 http://127.0.0.1:5000/
+```
 
 Fill in the form → click Predict → see the ADR (predicted room price).
 
