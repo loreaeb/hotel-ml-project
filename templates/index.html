@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel ADR Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)),
+                        url("{{ url_for('static', filename='background.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.88);
+            padding: 45px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            margin-top: 60px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2.7rem;
+            color: #556B2F; /* luxury olive green */
+            margin-bottom: 35px;
+        }
+
+        /* Elegant transparent olive green buttons */
+        .btn-custom {
+            background-color: rgba(107, 142, 35, 0.2);
+            color: #6B8E23;
+            border: 2px solid rgba(107, 142, 35, 0.5);
+            border-radius: 50px;
+            padding: 12px 0;
+            font-weight: 500;
+            font-size: 1.15rem;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: rgba(107, 142, 35, 0.35);
+            color: #556B2F;
+        }
+
+        /* Inputs styling */
+        .form-control {
+            border-radius: 15px;
+            padding: 12px 15px;
+            font-size: 1rem;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 8px rgba(107, 142, 35, 0.5);
+            border-color: rgba(107, 142, 35, 0.7);
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #556B2F;
+        }
+
+        /* Prediction box */
+        .alert-custom {
+            background-color: rgba(107, 142, 35, 0.15);
+            color: #556B2F;
+            border: 1px solid rgba(107, 142, 35, 0.3);
+            border-radius: 15px;
+            padding: 18px;
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 35px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Predict Hotel Room Price</h1>
+        <form action="/" method="post">
+            <div class="mb-3 text-start">
+                <label class="form-label">Lead Time:</label>
+                <input name="lead_time" type="number" class="form-control" required>
+            </div>
+            <div class="mb-3 text-start">
+                <label class="form-label">Weekend Nights:</label>
+                <input name="weekend" type="number" class="form-control" required>
+            </div>
+            <div class="mb-3 text-start">
+                <label class="form-label">Week Nights:</label>
+                <input name="week" type="number" class="form-control" required>
+            </div>
+            <div class="mb-3 text-start">
+                <label class="form-label">Adults:</label>
+                <input name="adults" type="number" class="form-control" required>
+            </div>
+            <div class="mb-3 text-start">
+                <label class="form-label">Children:</label>
+                <input name="children" type="number" class="form-control" required>
+            </div>
+            <div class="mb-3 text-start">
+                <label class="form-label">Babies:</label>
+                <input name="babies" type="number" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-custom w-100">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="alert alert-custom mt-4">
+            <strong>Predicted ADR (Room Price):</strong> ${{ prediction | round(2) }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
